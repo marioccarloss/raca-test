@@ -1,0 +1,72 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  @include flex-center;
+  min-height: 50vh;
+  padding: $spacing-8 $spacing-4;
+  background: $bg-secondary;
+}
+
+.content {
+  @include card-base;
+  padding: $spacing-8;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: $spacing-4;
+}
+
+.title {
+  color: $gray-900;
+  margin-bottom: $spacing-4;
+}
+
+.message {
+  color: $gray-600;
+  margin-bottom: $spacing-6;
+  line-height: $line-height-relaxed;
+}
+
+.actions {
+  @include flex-center;
+  gap: $spacing-4;
+  margin-bottom: $spacing-6;
+}
+
+.button {
+  @include button-primary;
+
+  &:last-child {
+    @include button-secondary;
+  }
+}
+
+.details {
+  text-align: left;
+  margin-top: $spacing-4;
+  padding: $spacing-4;
+  background: $gray-100;
+  border-radius: $border-radius-base;
+  border: 1px solid $gray-200;
+}
+
+.summary {
+  cursor: pointer;
+  font-weight: $font-weight-medium;
+  color: $gray-700;
+  margin-bottom: $spacing-2;
+}
+
+.error {
+  font-family: monospace;
+  font-size: $font-size-xs;
+  color: $error;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}

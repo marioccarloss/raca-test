@@ -1,0 +1,48 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  gap: $spacing-6;
+
+  &--grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+
+    @include mobile-only {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: $spacing-4;
+    }
+  }
+
+  &--list {
+    grid-template-columns: 1fr;
+    gap: $spacing-4;
+  }
+}
+
+.empty {
+  @include flex-center;
+  flex-direction: column;
+  padding: $spacing-16 $spacing-4;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: $spacing-4;
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  color: $gray-900;
+  margin-bottom: $spacing-2;
+}
+
+.emptyMessage {
+  color: $gray-600;
+  max-width: 400px;
+}

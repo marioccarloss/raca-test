@@ -1,0 +1,261 @@
+@use './variables' as *;
+
+// Responsive mixins
+@mixin mobile-only {
+  @media (max-width: calc($breakpoint-sm - 1px)) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin large-desktop-up {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl-desktop-up {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// Glass morphism
+@mixin glass-morphism($opacity: 0.1, $blur: 20px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin glass-morphism-dark($opacity: 0.1, $blur: 20px) {
+  background: rgba(0, 0, 0, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Hover effects
+@mixin hover-lift {
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin hover-scale($scale: 1.02) {
+  transition: transform $transition-base;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Button mixins
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3 $spacing-6;
+  border: none;
+  border-radius: $border-radius-lg;
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  white-space: nowrap;
+  user-select: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: linear-gradient(to right, #1f2937, #111827, #000000);
+  color: $white;
+  box-shadow: $shadow-lg;
+
+  &:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: transparent;
+  color: $primary;
+  border: 1px solid $primary;
+
+  &:hover:not(:disabled) {
+    background: $primary;
+    color: $white;
+  }
+}
+
+@mixin button-ghost {
+  @include button-base;
+  background: transparent;
+  color: $gray-700;
+
+  &:hover:not(:disabled) {
+    background: $gray-100;
+  }
+}
+
+// Card mixins
+@mixin card-base {
+  background: $white;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-base;
+  overflow: hidden;
+  transition: all $transition-base;
+}
+
+@mixin card-hover {
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+// Flex helpers
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+// Text helpers
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Position helpers
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// Animation helpers
+@mixin fade-in {
+  opacity: 0;
+  animation: fadeIn $transition-base ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin slide-up {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp $transition-base ease-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Scrollbar styling
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $gray-100;
+    border-radius: $border-radius-base;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gray-400;
+    border-radius: $border-radius-base;
+
+    &:hover {
+      background: $gray-500;
+    }
+  }
+}
+
+// Focus states
+@mixin focus-ring {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+}
+
+@mixin focus-visible {
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

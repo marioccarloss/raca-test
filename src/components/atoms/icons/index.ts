@@ -1,0 +1,14 @@
+export { AddIcon as add } from './add';
+export { ArrowIcon as arrow } from './arrow';
+export { CloseIcon as close } from './close';
+export { DeleteIcon as delete } from './delete';
+export { EditIcon as edit } from './edit';
+export { ErrorIcon as error } from './error';
+export { FilterIcon as filter } from './filter';
+export { GridIcon as grid } from './grid';
+export { HeartIcon as heart } from './heart';
+export { InfoIcon as info } from './info';
+export { ListIcon as list } from './list';
+export { SearchIcon as search } from './search';
+export { SuccessIcon as success } from './success';
+export { WarningIcon as warning } from './warning';

@@ -1,0 +1,157 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.header {
+  padding: $spacing-6 0;
+  background-color: $white;
+  border-bottom: 1px solid $gray-100;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-6;
+  gap: $spacing-6;
+
+  @include mobile-only {
+    flex-direction: column;
+    gap: $spacing-4;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $primary;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.search {
+  flex: 1;
+  display: flex;
+  gap: $spacing-4;
+  max-width: 600px;
+  margin-left: auto;
+
+  * {
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+
+  @include mobile-only {
+    max-width: none;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navigation {
+  margin-bottom: $spacing-6;
+
+  @include mobile-only {
+    flex-direction: column;
+    gap: $spacing-3;
+    align-items: flex-start;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-4;
+  font-size: $font-size-sm;
+}
+
+.breadcrumb {
+  color: $gray-500;
+
+  &:last-child {
+    color: $gray-900;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.separator {
+  margin: 0 $spacing-2;
+  color: $gray-400;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+
+  @include mobile-only {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: $spacing-2;
+  }
+}
+
+.category {
+  padding: $spacing-2 $spacing-4;
+  border-radius: $border-radius-full;
+  background-color: $gray-100;
+  color: $gray-700;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $gray-200;
+  }
+}
+
+.active {
+  background-color: $primary;
+  color: $white;
+
+  &:hover {
+    background-color: $primary-dark;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mobile-only {
+    flex-direction: column;
+    gap: $spacing-3;
+    align-items: stretch;
+  }
+}
+
+.results {
+  font-size: $font-size-sm;
+  color: $gray-500;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-2;
+}

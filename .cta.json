@@ -1,0 +1,11 @@
+{
+  "projectName": "raca-test",
+  "mode": "code-router",
+  "typescript": false,
+  "tailwind": false,
+  "packageManager": "bun",
+  "git": true,
+  "version": 1,
+  "framework": "react-cra",
+  "chosenAddOns": []
+}

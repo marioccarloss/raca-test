@@ -1,0 +1,15 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.home {
+  min-height: 100vh;
+  background: $bg-primary;
+}
+
+.main {
+  padding: $spacing-4 0 $spacing-8;
+
+  @include desktop-up {
+    padding: $spacing-6 0 $spacing-12;
+  }
+}

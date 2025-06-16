@@ -1,0 +1,97 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.button {
+  @include button-base;
+  position: relative;
+  gap: $spacing-2;
+
+  &--primary {
+    @include button-primary;
+  }
+
+  &--secondary {
+    @include button-secondary;
+  }
+
+  &--ghost {
+    @include button-ghost;
+  }
+
+  &--danger {
+    @include button-base;
+    background: $gradient-secondary;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, $secondary-dark 0%, $secondary 100%);
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &--sm {
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-sm;
+    border-radius: $border-radius-base;
+  }
+
+  &--md {
+    padding: $spacing-3 $spacing-6;
+    font-size: $font-size-base;
+  }
+
+  &--lg {
+    padding: $spacing-4 $spacing-8;
+    font-size: $font-size-lg;
+    border-radius: $border-radius-xl;
+  }
+
+  &--loading {
+    cursor: wait;
+
+    .content {
+      opacity: 0.7;
+    }
+  }
+}
+
+.icon {
+  @include flex-center;
+  flex-shrink: 0;
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.content {
+  @include flex-center;
+  transition: opacity $transition-fast;
+}
+
+.spinner {
+  @include absolute-center;
+  width: 1.2em;
+  height: 1.2em;
+
+  &__circle {
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: $border-radius-full;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

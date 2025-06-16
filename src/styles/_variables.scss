@@ -1,0 +1,157 @@
+// Colores principales
+$primary: #111827;
+$primary-dark: #000000;
+$primary-light: #212529;
+
+$secondary: #ff3b30;
+$secondary-dark: #d70015;
+$secondary-light: #ff6b60;
+
+$accent: #ff9500;
+$accent-dark: #e6850e;
+$accent-light: #ffb347;
+
+// Colores neutros
+$white: #ffffff;
+$black: #000000;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// Colores de estado
+$success: #10b981;
+$success-light: #d1fae5;
+$success-dark: #065f46;
+
+$warning: #f59e0b;
+$warning-light: #fef3c7;
+$warning-dark: #92400e;
+
+$error: #ef4444;
+$error-light: #fee2e2;
+$error-dark: #b91c1c;
+
+$info: #3b82f6;
+$info-light: #dbeafe;
+$info-dark: #1e40af;
+
+// Colores de fondo
+$bg-primary: $white;
+$bg-secondary: $gray-100;
+$bg-tertiary: $gray-200;
+$bg-glass: rgba(255, 255, 255, 0.1);
+$bg-glass-dark: rgba(0, 0, 0, 0.1);
+
+// Gradientes
+$gradient-primary: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+$gradient-secondary: linear-gradient(
+  135deg,
+  $secondary 0%,
+  $secondary-light 100%
+);
+$gradient-accent: linear-gradient(135deg, $accent 0%, $accent-light 100%);
+$gradient-glass: linear-gradient(
+  135deg,
+  rgba(255, 255, 255, 0.1) 0%,
+  rgba(255, 255, 255, 0.05) 100%
+);
+
+// Tipografía
+$font-family-primary:
+  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+  Arial, sans-serif;
+$font-family-secondary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-lg: 1.125rem; // 18px
+$font-size-xl: 1.25rem; // 20px
+$font-size-2xl: 1.5rem; // 24px
+$font-size-3xl: 1.875rem; // 30px
+$font-size-4xl: 2.25rem; // 36px
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+
+// Espaciado
+$spacing-0: 0;
+$spacing-1: 0.25rem; // 4px
+$spacing-2: 0.5rem; // 8px
+$spacing-3: 0.75rem; // 12px
+$spacing-4: 1rem; // 16px
+$spacing-5: 1.25rem; // 20px
+$spacing-6: 1.5rem; // 24px
+$spacing-8: 2rem; // 32px
+$spacing-10: 2.5rem; // 40px
+$spacing-12: 3rem; // 48px
+$spacing-16: 4rem; // 64px
+$spacing-20: 5rem; // 80px
+
+// Bordes
+$border-radius-sm: 0.25rem; // 4px
+$border-radius-base: 0.5rem; // 8px
+$border-radius-lg: 0.75rem; // 12px
+$border-radius-xl: 1rem; // 16px
+$border-radius-2xl: 1.5rem; // 24px
+$border-radius-full: 20rem;
+
+$border-width: 1px;
+$border-style: solid;
+$border-color: $gray-300;
+
+// Sombras
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-base:
+  0 1px 3px 0 rgba(0, 0, 0, 0.1),
+  0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-md:
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg:
+  0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl:
+  0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 1080;
+
+// Breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1440px;
+
+// Contenedor
+$container-max-width: 1440px;
+$container-padding: $spacing-4;
+
+// Transiciones
+$transition-fast: 150ms ease-in-out;
+$transition-base: 250ms ease-in-out;
+$transition-slow: 350ms ease-in-out;
