@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Modal, Notification, UIState, ViewMode } from '../../types';
+import { Modal, Notification, UIState as UIType, ViewMode } from '../../types';
+
+export type UIState = UIType;
 
 const initialState: UIState = {
   viewMode: 'grid',

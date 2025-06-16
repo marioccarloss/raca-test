@@ -58,11 +58,12 @@ export function useProducts() {
 }
 
 export function useFilteredProducts() {
-  const { products, isLoading } = useProducts();
+  const { products, isLoading, error } = useProducts();
 
   return {
     products: products,
     totalCount: products.length,
     isLoading,
+    error,
   };
 }

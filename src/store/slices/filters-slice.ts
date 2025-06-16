@@ -10,7 +10,7 @@ import {
   SortOption,
 } from '../../types';
 
-type FiltersState = {
+export type FiltersState = {
   activeFilters: ProductFilters;
   draftFilters: ProductFilters;
   drawer: FilterDrawerState;
@@ -185,7 +185,7 @@ export const {
   setDraftIsSale,
   setDraftSortBy,
   setGlobalSearchTerm,
-  setActiveCategory, // Exportar la nueva acción
+  setActiveCategory,
   applyFilters,
   resetFilters,
   resetDraftToActive,

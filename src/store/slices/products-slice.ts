@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { productService } from '../../services/product-service';
 import { LoadingState, Product, ProductFormData } from '../../types';
+import type { AppDispatch, RootState } from '../index';
 
-type ProductsState = {
+export type ProductsState = {
   items: Product[];
   status: LoadingState;
   error: string | null;
@@ -16,51 +17,54 @@ const initialState: ProductsState = {
   selectedProduct: null,
 };
 
-export const fetchProducts = createAsyncThunk(
-  'products/fetchProducts',
-  async () => {
-    return await productService.getProducts();
-  }
-);
+export interface ThunkConfig {
+  dispatch: AppDispatch;
+  state: RootState;
+}
 
-export const fetchProductById = createAsyncThunk(
-  'products/fetchProductById',
-  async (id: string) => {
-    return await productService.getProductById(id);
-  }
-);
+export const fetchProducts = createAsyncThunk<
+  Product[], // Tipo de retorno del payloadCreator
+  void, // Tipo del argumento del thunk (ThunkArg)
+  ThunkConfig // Tipos para thunkAPI (dispatch, getState, etc.)
+>('products/fetchProducts', async (_arg, _thunkAPI) => {
+  return await productService.getProducts();
+});
 
-export const createProduct = createAsyncThunk(
-  'products/createProduct',
-  async (productData: ProductFormData) => {
-    return await productService.createProduct(productData);
-  }
-);
+export const fetchProductById = createAsyncThunk<
+  Product | null,
+  string,
+  ThunkConfig
+>('products/fetchProductById', async (id, _thunkAPI) => {
+  return await productService.getProductById(id);
+});
 
-export const updateProduct = createAsyncThunk(
-  'products/updateProduct',
-  async ({
-    id,
-    productData,
-  }: {
-    id: string;
-    productData: Partial<ProductFormData>;
-  }) => {
-    return await productService.updateProduct(id, productData);
-  }
-);
+export const createProduct = createAsyncThunk<
+  Product,
+  ProductFormData,
+  ThunkConfig
+>('products/createProduct', async (productData, _thunkAPI) => {
+  return await productService.createProduct(productData);
+});
 
-export const deleteProduct = createAsyncThunk(
+export const updateProduct = createAsyncThunk<
+  Product,
+  { id: string; productData: Partial<ProductFormData> },
+  ThunkConfig
+>('products/updateProduct', async ({ id, productData }, _thunkAPI) => {
+  return await productService.updateProduct(id, productData);
+});
+
+export const deleteProduct = createAsyncThunk<string, string, ThunkConfig>(
   'products/deleteProduct',
-  async (id: string) => {
+  async (id, _thunkAPI) => {
     await productService.deleteProduct(id);
     return id;
   }
 );
 
-export const searchProducts = createAsyncThunk(
+export const searchProducts = createAsyncThunk<Product[], string, ThunkConfig>(
   'products/searchProducts',
-  async (query: string) => {
+  async (query, _thunkAPI) => {
     return await productService.searchProducts(query);
   }
 );
@@ -98,7 +102,8 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProductById.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.error.message || 'Error al cargar el producto';
+        state.error =
+          action.error.message || 'Error al cargar el producto seleccionado';
       })
 
       // Create Product
@@ -165,5 +170,4 @@ const productsSlice = createSlice({
 });
 
 export const { setSelectedProduct } = productsSlice.actions;
-
 export default productsSlice.reducer;

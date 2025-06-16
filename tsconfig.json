@@ -34,7 +34,7 @@
     "noUncheckedIndexedAccess": false,
 
     /* CSS Modules */
-    "types": ["vite/client"],
+    "types": ["vite/client", "jest", "@testing-library/jest-dom"],
 
     /* React 19 */
     "allowSyntheticDefaultImports": true,

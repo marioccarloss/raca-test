@@ -15,7 +15,7 @@ import { ProductSkeleton } from '../product-skeleton/product-skeleton';
 import styles from './product-grid.module.scss';
 
 function ProductGridContent() {
-  const { products, isLoading } = useFilteredProducts();
+  const { products, isLoading, error } = useFilteredProducts();
   const viewMode = useAppSelector(state => state.ui.viewMode);
   const dispatch = useAppDispatch();
 
@@ -46,6 +46,18 @@ function ProductGridContent() {
 
   if (isLoading) {
     return <GridSkeleton />;
+  }
+
+  if (error) {
+    return (
+      <div className={styles.errorState}>
+        <div className={styles.errorIcon}>😞</div>
+        <h3 className={styles.errorTitle}>Error al cargar los productos</h3>
+        <p className={styles.errorMessage}>
+          {typeof error === 'string' ? error : 'Por favor, inténtalo de nuevo.'}
+        </p>
+      </div>
+    );
   }
 
   if (products.length === 0) {
