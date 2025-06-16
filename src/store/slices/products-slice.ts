@@ -22,13 +22,12 @@ export interface ThunkConfig {
   state: RootState;
 }
 
-export const fetchProducts = createAsyncThunk<
-  Product[], // Tipo de retorno del payloadCreator
-  void, // Tipo del argumento del thunk (ThunkArg)
-  ThunkConfig // Tipos para thunkAPI (dispatch, getState, etc.)
->('products/fetchProducts', async (_arg, _thunkAPI) => {
-  return await productService.getProducts();
-});
+export const fetchProducts = createAsyncThunk<Product[], void, ThunkConfig>(
+  'products/fetchProducts',
+  async (_arg, _thunkAPI) => {
+    return await productService.getProducts();
+  }
+);
 
 export const fetchProductById = createAsyncThunk<
   Product | null,
@@ -75,6 +74,13 @@ const productsSlice = createSlice({
   reducers: {
     setSelectedProduct: (state, action: PayloadAction<Product | null>) => {
       state.selectedProduct = action.payload;
+    },
+    toggleFavorite: (state, action: PayloadAction<string>) => {
+      const productId = action.payload;
+      const product = state.items.find(p => p.id === productId);
+      if (product) {
+        product.isFavorite = !product.isFavorite;
+      }
     },
   },
   extraReducers: builder => {
@@ -169,5 +175,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { setSelectedProduct } = productsSlice.actions;
+export const { setSelectedProduct, toggleFavorite } = productsSlice.actions;
 export default productsSlice.reducer;

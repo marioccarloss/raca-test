@@ -1,22 +1,26 @@
+import type { ReactNode } from 'react';
 import { useAppSelector } from '../../../store/hooks';
 import { Notification } from '../../molecules/notification';
 import { FilterDrawer } from '../../organisms/filter-drawer/filter-drawer';
 import { Modal } from '../../organisms/modal';
-import { ProductGrid } from '../../organisms/product-grid/product-grid';
-import { Header } from '../header/header';
+import { Header } from '../../templates/header/header';
+import { Navigation } from '../../templates/navigation/navigation';
 import styles from './layout.module.scss';
 
-export function Layout() {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export function Layout({ children }: LayoutProps) {
   const modals = useAppSelector(state => state.ui.modals);
   const notifications = useAppSelector(state => state.ui.notifications);
 
   return (
     <div className="app">
       <Header />
+      <Navigation />
       <main className={styles.main}>
-        <div className="container">
-          <ProductGrid />
-        </div>
+        <div className="container">{children}</div>
       </main>
       <FilterDrawer />
 

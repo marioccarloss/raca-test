@@ -42,7 +42,6 @@ export function renderWithProviders(
   }: ExtendedRenderOptions = {}
 ) {
   function Wrapper({ children }: PropsWithChildren<unknown>) {
-    // Cambiado {} a unknown
     return <Provider store={store}>{children}</Provider>;
   }
   return { store, ...rtlRender(ui, { wrapper: Wrapper, ...renderOptions }) };

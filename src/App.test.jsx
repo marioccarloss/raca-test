@@ -5,7 +5,6 @@ import App from './App.jsx';
 describe('App', () => {
   test('renders the loading skeleton initially', async () => {
     render(<App />);
-    // Busca uno o más elementos de esqueleto
     const skeletonItems = await screen.findAllByLabelText('skeleton-item');
     expect(skeletonItems.length).toBeGreaterThan(0);
     for (const item of skeletonItems) {

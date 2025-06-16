@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { headerCategories } from '../../../constants/categories';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import {
@@ -32,7 +32,7 @@ export function Header() {
     setSearchValue(activeFilters.searchTerm);
   }, [activeFilters.searchTerm]);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchValue(value);
     dispatch(setGlobalSearchTerm(value));
@@ -89,12 +89,6 @@ export function Header() {
         </div>
 
         <div className={styles.navigation}>
-          <nav className={styles.breadcrumbs}>
-            <span className={styles.breadcrumb}>Inicio</span>
-            <span className={styles.separator}>›</span>
-            <span className={styles.breadcrumb}>Moda Femenina</span>
-          </nav>
-
           <div className={styles.categories}>
             {headerCategories.map(category => (
               <button

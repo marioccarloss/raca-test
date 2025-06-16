@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useProductMutations } from '../../../hooks/use-product-mutations'; // Importar el hook
+import { useProductMutations } from '../../../hooks/use-product-mutations';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { toggleFavorite } from '../../../store/slices/products-slice';
 import { openModal } from '../../../store/slices/ui-slice';
 import { Product } from '../../../types';
 import { Button } from '../../atoms/button/button';
@@ -22,16 +23,20 @@ export function ProductCard({
   onDelete,
 }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const editMode = useAppSelector(state => state.ui.editMode);
   const dispatch = useAppDispatch();
   const { deleteProduct } = useProductMutations();
 
+  const isFavorite = useAppSelector(
+    state =>
+      state.products.items.find(p => p.id === product.id)?.isFavorite ?? false
+  );
+
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsFavorite(!isFavorite);
+    dispatch(toggleFavorite(product.id));
   };
 
   const handleEdit = (e: React.MouseEvent) => {
@@ -142,7 +147,6 @@ export function ProductCard({
     );
   }
 
-  // Vista GRID (código original)
   return (
     <>
       <div

@@ -39,6 +39,7 @@ export type Product = {
   reviewCount: number;
   isNew?: boolean;
   isSale?: boolean;
+  isFavorite?: boolean;
   tags: string[];
   createdAt: string;
   updatedAt: string;

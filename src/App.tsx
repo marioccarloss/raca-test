@@ -1,6 +1,9 @@
 import { Suspense } from 'react';
 import { Provider } from 'react-redux';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ErrorBoundary } from './components/organisms/error-boundary/error-boundary';
+import { FavoritesPage } from './components/pages/favorites/favorites-page'; // Importar FavoritesPage
+import { Home } from './components/pages/home/home';
 import { Layout } from './components/templates/layout/layout';
 import { store } from './store';
 import './styles/global.scss';
@@ -27,7 +30,14 @@ function App() {
     <Provider store={store}>
       <ErrorBoundary>
         <Suspense fallback={<AppSkeleton />}>
-          <Layout />
+          <Router>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/favoritos" element={<FavoritesPage />} />
+              </Routes>
+            </Layout>
+          </Router>
         </Suspense>
       </ErrorBoundary>
     </Provider>
