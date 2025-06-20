@@ -112,6 +112,7 @@
   pointer-events: none;
 
   &.thumbMin {
+    pointer-events: none;
     z-index: 3;
   }
 
